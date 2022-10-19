@@ -17,6 +17,13 @@ let app = http.createServer((req, res) => {
             res.end();
         }
     }
+    else if (req.url === "/textstream") {
+        if (req.method === "GET") {
+            let readStream = fs.createReadStream("./stream.txt");
+            res.write(readStream);
+            res.end();
+        }
+    }
 })
 
 
