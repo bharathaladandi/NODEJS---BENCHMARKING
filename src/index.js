@@ -9,6 +9,14 @@ let app = http.createServer((req, res) => {
             res.end();
         }
     }
+    else if (req.url.startsWith("/textasync")) {
+        if (req.method === "GET") {
+            res.write(fs.readFile("./example.txt", "utf8", function (err, data) {
+                console.log(data);
+            }));
+            res.end();
+        }
+    }
 })
 
 
